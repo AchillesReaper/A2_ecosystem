@@ -1,4 +1,4 @@
-Drop [] drops = new Drop[500];
+Drop [] drops = new Drop[5000];
 
 class Drop {
   float x = random(width) ;

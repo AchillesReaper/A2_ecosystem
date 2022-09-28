@@ -73,7 +73,7 @@ void draw() {
 
   //draw RainDrop
   float rainDrop = jsonData.getJSONArray(itemJson).getFloat(1);
-  for (int xx=0; xx< rainDrop; xx++) {
+  for (int xx=0; xx< rainDrop*10; xx++) {
     drops[xx].fall();
     drops[xx].show();
   }
