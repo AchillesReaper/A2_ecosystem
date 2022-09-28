@@ -3,7 +3,7 @@ SoundFile soundfile;
 
 JSONArray jsonData;
 int itemJson = 0;
-// String dataLink = "/Users/achillesreaper/Library/CloudStorage/OneDrive-UTS/Master of Information Technology/4. Subjects/Sem 4/32027 IM/Assessment/A2 Data Visualisation Project/data/data_2022-07_R.json";
+
 String dataLink = "data_2022-07_R.json";
 
 PImage img_star1;
@@ -13,7 +13,7 @@ int g = 0;
 int b = 0;
 
 void setup() {
-  size(1200, 800);
+  size(1600, 1200);
   //frameRate(1200);
   //for sun movement along the x-axis
   sunXincrement = (width-sunSize)/((sunsetTime-sunRaiseTime)*12); //The data shows 12 readings per hour
@@ -50,9 +50,7 @@ void draw() {
   line(0, i, width, i);
   }
 
-
-
-  //draw sun with time data
+  //draw sun
   String textDate = jsonData.getJSONArray(itemJson).getString(0);
   String time = split(textDate, " ")[1];
   currentTime = int(split(time, ":")[0]);
@@ -62,6 +60,11 @@ void draw() {
   drawSun();
   popMatrix();
   //----------------------------------
+
+
+  //draw cloud
+  float cloudSpeed = jsonData.getJSONArray(itemJson).getFloat(2);
+  cloud(cloudSpeed,height/5);
 
 
   //draw RainDrop
@@ -74,20 +77,19 @@ void draw() {
   soundfile.amp(rainVolume);
 
 
-  //draw cloud
-  float cloudSpeed = jsonData.getJSONArray(itemJson).getFloat(1);
-  cloud(cloudSpeed,height/5);
-
-  
-
   //Label
   fill(255, 0, 0);
   textSize(20);
-  text("Sensors of UTS", 20, 20);
+  text("Environment around Building 11 UTS", 20, 20);
   text("Time: ", 20, 50);
+  text("Radiation: ", 20, 80);
+  text("Wind: ", 20, 110);
+  text("Rain: ", 20, 140);
   text(textDate, 120, 50);
-  text("Time: ", 20, 50);
-  text(textDate, 120, 50);
+  text(solar, 120, 80);
+  text(cloudSpeed, 120, 110);
+  text(rainDrop, 120, 140);
+  
 
 
   //prepare JSON reading for the next loop

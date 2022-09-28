@@ -6,7 +6,7 @@ float sunY = 300;
 int sunRaiseTime = 6;
 int sunsetTime = 18;
 int currentTime;
-int sunRotateAngle = 0;
+float sunRotateAngle = 0;
 float sunXincrement;
 PImage img_sun;
 
@@ -23,12 +23,11 @@ void drawSun() {
   float sunXt = map(sunX, sunSize/2, width-sunSize/2, -(width-sunSize)/2, (width-sunSize)/2);
   sunY = sunHeight/sq((width-sunSize)/2)*sq(sunXt) - sunHeight;
   fill(255, 0, 0);
-  //pushMatrix();
-  //translate(sunX,sunY);
-  //rotate(sunRotateAngle);
-  imageMode(CENTER);
-  image(img_sun,sunX,sunY,sunSize,sunSize);
-  sunRotateAngle+=0.01;
-  //popMatrix();
+
+  translate(sunX,sunY);
+  rotate(sunRotateAngle);
+  image(img_sun,-sunSize/2,-sunSize/2,sunSize,sunSize);
+  sunRotateAngle += 0.01;
+  println(sunRotateAngle);
 
 }
