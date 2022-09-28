@@ -6,7 +6,6 @@ int itemJson = 0;
 
 String dataLink = "data_2022-07_R.json";
 
-PImage img_star1;
 
 int r = 0;
 int g = 0;
@@ -50,6 +49,11 @@ void draw() {
   line(0, i, width, i);
   }
 
+
+  //Night time sky
+  nightSky();
+
+
   //draw sun
   String textDate = jsonData.getJSONArray(itemJson).getString(0);
   String time = split(textDate, " ")[1];
@@ -78,7 +82,7 @@ void draw() {
 
 
   //Label
-  fill(255, 0, 0);
+  fill(255);
   textSize(20);
   text("Environment around Building 11 UTS", 20, 20);
   text("Time: ", 20, 50);

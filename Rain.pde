@@ -23,7 +23,7 @@ class Drop {
   void show() {
     float thick = map(z, 0, 20, 0.1, 0.3);
     strokeWeight (thick);
-    stroke(0,0,255); // white color rain drop
+    stroke(255); // white color rain drop
     line(x, y, x, y +len);
   }
 }
