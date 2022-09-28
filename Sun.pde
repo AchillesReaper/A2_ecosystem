@@ -27,7 +27,6 @@ void drawSun() {
   translate(sunX,sunY);
   rotate(sunRotateAngle);
   image(img_sun,-sunSize/2,-sunSize/2,sunSize,sunSize);
-  sunRotateAngle += 0.01;
-  println(sunRotateAngle);
+  sunRotateAngle += 0.05;
 
 }

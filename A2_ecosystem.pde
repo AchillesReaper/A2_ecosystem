@@ -4,7 +4,7 @@ SoundFile soundfile;
 JSONArray jsonData;
 int itemJson = 0;
 
-String dataLink = "data_2022-07_R.json";
+String dataLink = "data_2022-07_RMV.json";
 
 
 int r = 0;
@@ -13,7 +13,7 @@ int b = 0;
 
 void setup() {
   size(1600, 1200);
-  //frameRate(1200);
+  frameRate(60);
   //for sun movement along the x-axis
   sunXincrement = (width-sunSize)/((sunsetTime-sunRaiseTime)*12); //The data shows 12 readings per hour
   img_sun = loadImage("image/sun/sun_1.png");
@@ -108,4 +108,5 @@ void draw() {
   } else {
     itemJson = 0;
   }
+  println(frameRate);
 }
