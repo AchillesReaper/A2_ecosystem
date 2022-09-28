@@ -48,11 +48,11 @@ void draw() {
   stroke(r, i, i);
   line(0, i, width, i);
   }
-
+  //----------------------------------
 
   //Night time sky
   nightSky();
-
+  //----------------------------------
 
   //draw sun
   String textDate = jsonData.getJSONArray(itemJson).getString(0);
@@ -67,8 +67,14 @@ void draw() {
 
 
   //draw cloud
-  float cloudSpeed = jsonData.getJSONArray(itemJson).getFloat(2);
-  cloud(cloudSpeed,height/5);
+  float windSpeed = jsonData.getJSONArray(itemJson).getFloat(2);
+  cloud(windSpeed,height/5);
+  //----------------------------------
+
+  //draw wind turbine
+  turbineAngle += windSpeed;
+  turbine(-turbineAngle);
+  //----------------------------------
 
 
   //draw RainDrop
@@ -91,7 +97,7 @@ void draw() {
   text("Rain: ", 20, 140);
   text(textDate, 120, 50);
   text(solar, 120, 80);
-  text(cloudSpeed, 120, 110);
+  text(windSpeed, 120, 110);
   text(rainDrop, 120, 140);
   
 
