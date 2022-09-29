@@ -9,10 +9,17 @@ int currentTime;
 float sunRotateAngle = 0;
 float sunXincrement;
 PImage img_sun;
-
 //________________________________
 
-void drawSun() {
+//variable for solar radiation
+int r = 0;
+int g = 0;
+int b = 0;
+//________________________________
+
+void drawSun(String textDate) {
+  String time = split(textDate, " ")[1];
+  currentTime = int(split(time, ":")[0]);
   //x-coordinate of the sun
   if (currentTime >= sunRaiseTime && currentTime <= sunsetTime) {
     sunX += sunXincrement;
@@ -24,9 +31,20 @@ void drawSun() {
   sunY = sunHeight/sq((width-sunSize)/2)*sq(sunXt) - sunHeight;
   fill(255, 0, 0);
 
-  translate(sunX,sunY);
+  translate(sunX, sunY);
   rotate(sunRotateAngle);
-  image(img_sun,-sunSize/2,-sunSize/2,sunSize,sunSize);
+  image(img_sun, -sunSize/2, -sunSize/2, sunSize, sunSize);
   sunRotateAngle += 0.05;
+}
 
+void solarRadiation(float solar) {
+  // background(r + 11, g + 16, b + 38);
+  r = int(solar*10) + 50;
+  g = int(solar*5);
+  b =38;
+
+  for (int i = 0; i < height; i++) {
+    stroke(r, i, i);
+    line(0, i, width, i);
+  }
 }
