@@ -1,11 +1,3 @@
-import processing.sound.*;
-
-JSONArray jsonData;
-int itemJson = 0;
-
-String dataLink = "data_2022-07_R.json";
-
-
 void setup() {
   size(1600, 1000);
   frameRate(20);
@@ -17,8 +9,8 @@ void setup() {
   for (int i=0; i< drops.length; i++) {
     drops[i] = new Drop();
   }
-  soundfile = new SoundFile(this, "mixkit-light-rain-loop.wav");
-  soundfile.loop();
+  rainSound = new SoundFile(this, "mixkit-light-rain-loop.wav");
+  rainSound.loop();
 
   //Cloud
   img_cloud1 = loadImage("image/cloud/cloud_6.png");
@@ -32,42 +24,62 @@ void setup() {
   //Contorl elements
   cp5 = new ControlP5(this);
 
+
+  cp5.addSlider("timeFlow")
+    .setLabel("Time Flow Speed")
+    .setSize(width/3, 30)
+    .setValue(20)
+    .setRange(5, 100)
+    .setColorForeground(color(245, 255, 250))
+    .setColorBackground(color(119, 136, 153))
+    .setColorActive(color(245, 255, 250))
+    .setPosition(20, height-180)
+    ;
+
+  //calendar btnS
+  //turbine color knob
+  cp5.addKnob("sldTColor")
+    .setLabel("Turbine color")
+    .setRange(0, 100)
+    .setValue(20)
+    .setRadius(80)
+    .setPosition(width/2-80, height-180);
+
+  //play btn
+  cp5.addButton("btnBGM")
+    .setLabel("BGM")
+    .setSize(80,30)
+    .setSwitch(true)
+    .setPosition(width/2+160, height-180)
+    ;
+
+  //sound slider
+  cp5.addSlider("bgmAmp")
+    .setLabel("BGM volume")
+    .setSize(180, 30)
+    .setValue(0.2)
+    .setRange(0.0, 1.0)
+    .setColorForeground(color(245, 255, 250))
+    .setColorBackground(color(119, 136, 153))
+    .setColorActive(color(245, 255, 250))
+    .setPosition(width/2+260, height-180)
+    ;
+  //sun height slider
   cp5.addSlider("sunHeight")
     .setLabel("Sun Height")
-    .setPosition(width - 100, height - 150)
-    .setSize(40, 100)
+    .setSize(30, 160)
     .setValue(300)
     .setRange(250, 540)
     .setColorForeground(color(240, 128, 128))
     .setColorBackground(color(255, 160, 122))
     .setColorActive(color(240, 128, 128))
-    ;
-
-  cp5.addSlider("timeFlow")
-    .setLabel("Time Flow Speed")
-    .setPosition(width/2, height - 100)
-    .setSize(100, 40)
-    .setValue(20)
-    .setRange(5, 60)
-    .setColorForeground(color(245, 255, 250))
-    .setColorBackground(color(119, 136, 153))
-    .setColorActive(color(245, 255, 250))
+    .setPosition(width - 100, height - 180)
     ;
   //----------------------------------
 
 
   //background music
-  // ac = new AudioContext();
-  // String audioFileName = "data/Animal Crossing New Horizons.wav";
-  // player = new SamplePlayer(ac, SampleManager.sample(audioFileName));
-  
-  // player.setLoopType(SamplePlayer.LoopType.LOOP_FORWARDS);
-  // p = new Panner(ac, 0);
-  // gg = new Gain(ac, 2, 0.5);
-  // p.addInput(player);
-  // gg.addInput(p);
-  // ac.out.addInput(gg);
-  // ac.start();
+  bgm = new SoundFile(this, "Animal Crossing New Horizons.wav");
 }
 
 void draw() {
@@ -113,7 +125,7 @@ void draw() {
     drops[xx].show();
   }
   float rainVolume = map(rainDrop, 0, 120, 0.0, 1.0);
-  soundfile.amp(rainVolume);
+  rainSound.amp(rainVolume);
   //----------------------------------
 
   //Label -> showing sensors reading directly
@@ -130,6 +142,10 @@ void draw() {
   text(rainDrop, 120, 140);
   //----------------------------------
 
+  //ground
+  fill(0);
+  rect(0,height-200,width,200);
+
 
   //prepare JSON reading for the next loop
   if (itemJson < jsonData.size()-1) {
@@ -142,4 +158,5 @@ void draw() {
 
   //control elements
   frameRate(timeFlow);
+  bgm.amp(bgmAmp);
 }

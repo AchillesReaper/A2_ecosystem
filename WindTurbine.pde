@@ -7,7 +7,7 @@ void turbine(float rotateSpeed){
 
     rotate(rotateSpeed*radians(1));
     translate(-width/2, -height/2);
-    fill(100);
+    fill(sldTColor*2,sldTColor/3,sldTColor); //@TODO formular for the color to be adjusted
     tri(TWO_PI/3);
     tri(TWO_PI/3*2);
     tri(TWO_PI/3*3);
