@@ -20,6 +20,7 @@ void setup() {
 
   //load the data
   jsonData = loadJSONArray(dataLink);
+  itemJson = 0;
 
   //Contorl elements
   cp5 = new ControlP5(this);
@@ -37,6 +38,86 @@ void setup() {
     ;
 
   //calendar btnS
+  cp5.addButton("btn2021_07")
+    .setLabel("2021-07")
+    .setSize(60,30)
+    .setPosition(20, height-120)
+    ;
+
+  cp5.addButton("btn2021_08")
+    .setLabel("2021-08")
+    .setSize(60,30)
+    .setPosition(100, height-120)
+    ;
+
+  cp5.addButton("btn2021_09")
+    .setLabel("2021-09")
+    .setSize(60,30)
+    .setPosition(180, height-120)
+    ;
+
+  cp5.addButton("btn2021_10")
+    .setLabel("2021-10")
+    .setSize(60,30)
+    .setPosition(260, height-120)
+    ;
+
+  cp5.addButton("btn2021_11")
+    .setLabel("2021-11")
+    .setSize(60,30)
+    .setPosition(340, height-120)
+    ;
+    
+  cp5.addButton("btn2021_12")
+    .setLabel("2021-12")
+    .setSize(60,30)
+    .setPosition(420, height-120)
+    ;
+    
+  cp5.addButton("btn2022_01")
+    .setLabel("2022-01")
+    .setSize(60,30)
+    .setPosition(20, height-80)
+    ;
+
+  cp5.addButton("btn2022_02")
+    .setLabel("2022-02")
+    .setSize(60,30)
+    .setPosition(100, height-80)
+    ;
+
+  cp5.addButton("btn2022_03")
+    .setLabel("2022-03")
+    .setSize(60,30)
+    .setPosition(180, height-80)
+    ;
+
+  cp5.addButton("btn2022_04")
+    .setLabel("2022-04")
+    .setSize(60,30)
+    .setPosition(260, height-80)
+    ;
+
+  cp5.addButton("btn2022_05")
+    .setLabel("2022-05")
+    .setSize(60,30)
+    .setPosition(340, height-80)
+    ;
+    
+  cp5.addButton("btn2022_06")
+    .setLabel("2022-06")
+    .setSize(60,30)
+    .setPosition(420, height-80)
+    ;
+    
+  cp5.addButton("btn2022_07")
+    .setLabel("2022-07_RMA")
+    .setSize(60,30)
+    .setPosition(500, height-80)
+    ;
+        
+
+
   //turbine color knob
   cp5.addKnob("sldTColor")
     .setLabel("Turbine color")
