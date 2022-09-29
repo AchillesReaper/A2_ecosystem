@@ -1,9 +1,17 @@
 void setup() {
   size(1600, 1000);
   frameRate(20);
+  //load images
+  img_sun = loadImage("image/sun/sun_1.png");
+  img_cloud1 = loadImage("image/cloud/cloud_6.png");
+  img_star1 = loadImage("image/background/star_1.png");
+  img_building11_day = loadImage("image/background/building11_day_.png");
+  img_building11_night = loadImage("image/background/building11_night_.png");
+  img_rock = loadImage("image/background/rock.png");
+
   //for sun movement along the x-axis
   sunXincrement = (width-sunSize)/((sunsetTime-sunRaiseTime)*12); //The data shows 12 readings per hour
-  img_sun = loadImage("image/sun/sun_1.png");
+  
 
   //Rain effect
   for (int i=0; i< drops.length; i++) {
@@ -12,11 +20,6 @@ void setup() {
   rainSound = new SoundFile(this, "mixkit-light-rain-loop.wav");
   rainSound.loop();
 
-  //Cloud
-  img_cloud1 = loadImage("image/cloud/cloud_6.png");
-
-  //night background
-  img_star1 = loadImage("image/staryNight/star_1.png");
 
   //load the data
   jsonData = loadJSONArray(dataLink);
@@ -161,6 +164,7 @@ void setup() {
 
   //background music
   bgm = new SoundFile(this, "Animal Crossing New Horizons.wav");
+
 }
 
 void draw() {
@@ -223,9 +227,21 @@ void draw() {
   text(rainDrop, 120, 140);
   //----------------------------------
 
+  //background
+  image(img_rock,-40,height/2,width/6,height/3);
+  if (!(currentTime >= sunRaiseTime && currentTime <= sunsetTime) && solar == 0) {
+    image(img_building11_night,width-400,height/2,400,300);
+  } else {
+    image(img_building11_day,width-400,height/2,400,300);
+  }
+
+
+  
   //ground
   fill(0);
   rect(0,height-200,width,200);
+
+  
 
 
   //prepare JSON reading for the next loop

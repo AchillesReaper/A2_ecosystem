@@ -36,15 +36,3 @@ void drawSun(String textDate) {
   image(img_sun, -sunSize/2, -sunSize/2, sunSize, sunSize);
   sunRotateAngle += 0.05;
 }
-
-void solarRadiation(float solar) {
-  // background(r + 11, g + 16, b + 38);
-  r = int(solar*10) + 50;
-  g = int(solar*5);
-  b =38;
-
-  for (int i = 0; i < height; i++) {
-    stroke(r, i, i);
-    line(0, i, width, i);
-  }
-}
