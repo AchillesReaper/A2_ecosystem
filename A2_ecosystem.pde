@@ -1,5 +1,6 @@
 void setup() {
-  size(1600, 1000);
+  // size(1600, 1000);
+  fullScreen();
   frameRate(20);
   //load images
   img_sun = loadImage("image/sun/sun_1.png");
@@ -203,6 +204,20 @@ void draw() {
   turbine(-turbineAngle);
   //----------------------------------
 
+ //background
+  image(img_rock,-40,height/2,width/6,height/3);
+  if (!(currentTime >= sunRaiseTime && currentTime <= sunsetTime) && solar == 0) {
+    image(img_building11_night,width-400,(height-200)-295,400,300);
+  } else {
+    image(img_building11_day,width-400,(height-200)-295,400,300);
+  }
+  //----------------------------------
+
+  // cat
+  pushMatrix();
+  cat1(catPosition, height-200-size*12);
+  popMatrix();
+  catPosition += 1;
 
   //draw RainDrop -> visualise + audiolise Rain
   for (int xx=0; xx< rainDrop*10; xx++) {
@@ -226,24 +241,12 @@ void draw() {
   text(windSpeed, 120, 110);
   text(rainDrop, 120, 140);
   //----------------------------------
-
-  //background
-  image(img_rock,-40,height/2,width/6,height/3);
-  if (!(currentTime >= sunRaiseTime && currentTime <= sunsetTime) && solar == 0) {
-    image(img_building11_night,width-400,height/2,400,300);
-  } else {
-    image(img_building11_day,width-400,height/2,400,300);
-  }
-
-
-  
+ 
   //ground
   fill(0);
   rect(0,height-200,width,200);
-
+  //----------------------------------
   
-
-
   //prepare JSON reading for the next loop
   if (itemJson < jsonData.size()-1) {
     itemJson++;
@@ -251,6 +254,7 @@ void draw() {
     itemJson = 0;
   }
   //----------------------------------
+
 
 
   //control elements
