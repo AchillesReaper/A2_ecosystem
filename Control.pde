@@ -90,4 +90,5 @@ public void btn2022_07(){
 }
 public void btnPunk(boolean theValue){
     isPunk = theValue;
+    size = -size;
 }

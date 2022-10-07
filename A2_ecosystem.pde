@@ -166,7 +166,7 @@ void setup() {
   .setRGB(color(255,255,255))
   ;
   cp5.addButton("btnPunk")
-  .setLabel("Punk")
+  .setLabel("moon walk")
   .setSize(80,30)
   .setSwitch(true)
   .setPosition(width/2+160, height-140);
@@ -225,12 +225,23 @@ void draw() {
 
   // cat
   pushMatrix();
-  cat1(catPosition, height-200-size*12);
+  cat1(catPosition, height-200-abs(size)*12);
   popMatrix();
-  catPosition += 1;
-  if (catPosition > width+100){
-    catPosition = -100;
+  catPosition += catMovement;
+  if (catPosition > width){
+    catMovement = -1;
+    size = -size;
   }
+  if (catPosition < 0){
+    catMovement = 1;
+    size = -size;
+  }
+
+
+  
+  println("cat pos:", catPosition);
+  println("catMovement:", catMovement);
+  println("cat size", size);
 
   //draw RainDrop -> visualise + audiolise Rain
   for (int xx=0; xx< rainDrop*10; xx++) {
