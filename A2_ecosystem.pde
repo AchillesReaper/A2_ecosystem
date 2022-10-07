@@ -160,6 +160,16 @@ void setup() {
     .setColorActive(color(240, 128, 128))
     .setPosition(width - 100, height - 180)
     ;
+
+  //about the cat
+  cp5.addColorWheel("cat_color" , width/2+260 , height-150 , 150 )
+  .setRGB(color(255,255,255))
+  ;
+  cp5.addButton("btnPunk")
+  .setLabel("Punk")
+  .setSize(80,30)
+  .setSwitch(true)
+  .setPosition(width/2+160, height-140);
   //----------------------------------
 
 
@@ -218,6 +228,9 @@ void draw() {
   cat1(catPosition, height-200-size*12);
   popMatrix();
   catPosition += 1;
+  if (catPosition > width+100){
+    catPosition = -100;
+  }
 
   //draw RainDrop -> visualise + audiolise Rain
   for (int xx=0; xx< rainDrop*10; xx++) {

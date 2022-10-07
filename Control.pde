@@ -88,3 +88,6 @@ public void btn2022_07(){
     jsonData = loadJSONArray(dataLink);
     itemJson = 0;
 }
+public void btnPunk(boolean theValue){
+    isPunk = theValue;
+}
