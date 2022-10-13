@@ -224,24 +224,24 @@ void draw() {
   //----------------------------------
 
   // cat
+  if (size < 0) {
+    catPosY = int(height-195-abs(size)*12);
+  } else {
+    catPosY = int(height-200-abs(size)*12);
+  }
   pushMatrix();
-  cat1(catPosition, height-200-abs(size)*12);
+  cat1(catPosX, catPosY);
   popMatrix();
-  catPosition += catMovement;
-  if (catPosition > width){
+  catPosX += catMovement;
+  if (catPosX > width){
     catMovement = -1;
     size = -size;
   }
-  if (catPosition < 0){
+  if (catPosX < 0){
     catMovement = 1;
     size = -size;
   }
 
-
-  
-  println("cat pos:", catPosition);
-  println("catMovement:", catMovement);
-  println("cat size", size);
 
   //draw RainDrop -> visualise + audiolise Rain
   for (int xx=0; xx< rainDrop*10; xx++) {

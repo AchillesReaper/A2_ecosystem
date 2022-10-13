@@ -1,4 +1,5 @@
-int catPosition = 0;
+int catPosX = 0;
+int catPosY;
 int catMovement = 1;
 boolean isPunk = false;
 
