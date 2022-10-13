@@ -82,7 +82,7 @@ void cat1(float x_pos, float y_pos){
   if ((count>5)){
       count = 0;
   }
-  println("mouth :",count);
+
   
   //eye
   fill(#4279EA); 
@@ -381,6 +381,6 @@ void front_leg(){
   if ((count_leg>5)){
       count_leg = 0;
   }
-  println("leg :",count_leg);
+
 
 }
